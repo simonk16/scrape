@@ -1,9 +1,8 @@
-var express = require("express");
-
-var mongoose = require("mongoose");
-var logger = require("morgan");
-var exphbs  = require('express-handlebars');
-var app = express();
+const express = require("express");
+const mongoose = require("mongoose");
+const logger = require("morgan");
+const exphbs  = require('express-handlebars');
+const app = express();
 
 
 
@@ -16,28 +15,14 @@ app.use(express.static("public"));
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
+require("./routes/apiRoutes") (app);
+require("./routes/htmlRoutes")(app);
 
+const PORT = process.env.PORT || 3000;
 
+app.listen(PORT, () => console.log("App running on port " + PORT + "!"));
 
-var PORT = process.env.PORT || 3000;
-
-
-
-
-app.listen(PORT, function() {
-    console.log("App running on port " + PORT + "!");
-});
-
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
-
-// Routes are here becuase idk how to bootstrap from a different file
-app.get("/scrape", function(req, res){
-    res.send("hello, this will be updated later")
-});
-
-app.get('/', function(req, res){
-    res.render("index");
-})
   
