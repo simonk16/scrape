@@ -17,17 +17,21 @@ module.exports = function (app) {
                 console.log(result.title + "\n" + result.link);
 
                 db.Article.create(result).then(function (dbArticle) {
-                    console.log(dbArticle);
+                    
+                    
                 }).catch(function (err) {
                     console.log(err);
                 })
 
             })
+               
+
+            res.render("scrapeComplete");
 
 
 
-            res.send("check console");
         });
+        
     });
 
     app.get("/articles", (req, res) => {
