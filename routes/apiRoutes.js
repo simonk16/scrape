@@ -36,9 +36,10 @@ module.exports = function (app) {
 
     app.get("/articles", (req, res) => {
         db.Article.find({})
-            .then((dbArticle) => res.render("articles", {articles : dbArticle}))
-            .catch((err) => res.json(err))
-    });
+            .then((dbArticle) => {
+                res.render("articles", {articles: dbArticle})
+            })
+        });
 
     app.get("/articles/:id", (req, res) => {
         db.Article.findOne({ _id: req.params.id})
