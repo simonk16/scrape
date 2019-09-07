@@ -37,7 +37,8 @@ module.exports = function (app) {
     app.get("/articles", (req, res) => {
         db.Article.find({})
             .then((dbArticle) => {
-                res.render("articles", {articles: dbArticle})
+                console.log({articles: dbArticle})
+                res.render("articles", {articles: dbArticle});
             })
         });
 

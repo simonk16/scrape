@@ -1,8 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const logger = require("morgan");
-const exphbs  = require('express-handlebars');
 const app = express();
+const exphbs  = require('express-handlebars');
+
 
 
 
@@ -11,9 +12,10 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Make public a static folder
-app.use(express.static("public"));
+app.use('/static', express.static('public'));
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
+
 
 require("./routes/apiRoutes") (app);
 require("./routes/htmlRoutes")(app);
