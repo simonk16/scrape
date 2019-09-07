@@ -1,14 +1,10 @@
-<div style="display: flex; flex-direction: row; justify-content: right; flex-wrap: wrap-reverse">
-{{#each articles}}
-   <div class="col-sm-4"style="border-style: dashed ">
+<div class="container" style="display: flex; flex-direction: row; justify-content: start; flex-wrap: wrap">
+   {{#each articles}}
+   <div class="col-sm-6" style="border: black 1px solid">
       <h1>{{this.title}}</h1>
-      <br>
+      <a href=https://pitchfork.com{{this.link}}>https://pitchfork.com{{this.link}}</a> 
       
-      <div>https://pitchfork.com{{this.link}}</div>
-      
-      <button class="btn btn-outline-secondary" type="button" id="button-addon1">Submit</button>
-      <input type="text" class="form-control col-sm-4" placeholder="Leave a note" aria-label="Example text with button addon" aria-describedby="button-addon1">   
+      <button style="float: right" type="button" class="btn btn-primary">Leave a note</button>
    </div>
-   <br>
-{{/each}}
+   {{/each}}
 </div>
